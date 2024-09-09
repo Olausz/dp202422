@@ -2,13 +2,25 @@ package tech.angelofdiasg.contas;
 
 public class Conta {
 	   int numero;
-	   String nome;
 	   double saldo;
-	   double limite;
 
-	   void sacar(double quantidade) {
-		   double novoSaldo = this.saldo - quantidade;
-		   this.saldo = novoSaldo;
+	   boolean sacar(double quantidade) {
+			if (this.saldo < quantidade){
+				return false;	
+			} else {
+				double novoSaldo = this.saldo - quantidade;
+				this.saldo = novoSaldo;
+				return true;
+			}
+	   }
+
+	   boolean depositar(double quantidade) {
+			if(quantidade == 0 || quantidade < 0){
+				return false;
+			} else {
+				this.saldo = this.saldo + quantidade;
+				return true;
+			}
 	   }
 	   
 	   public Conta() {
